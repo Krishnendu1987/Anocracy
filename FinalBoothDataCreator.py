@@ -29,7 +29,7 @@ for filename in os.listdir(path):
             img_file: str = img_file.replace('\\', '/')
             for page in pages:
                 if pages.index(page) > 1 and pages.index(page) is not len(pages)-1 :
-                    #page.save("%s-page%d.jpg" % (pdf_file, pages.index(page)), "JPEG")
+                    page.save("%s-page%d.jpg" % (img_file, pages.index(page)), "JPEG")
                     #img = cv2.imread(page)
                     print(img_file)
                 print(pdf_file)
