@@ -51,7 +51,7 @@ for filename1 in os.listdir(temp1_path):
                                    type=cv2.THRESH_BINARY_INV)
         cnts , hierarchy = cv2.findContours(thresh_gray,cv2.RETR_LIST, \
                                        cv2.CHAIN_APPROX_SIMPLE)
-        
+        img_file_name1 = img_file_name1[:-4]
         ROI_number = 0
         min_area = 50000
         max_area = 250000
@@ -61,7 +61,7 @@ for filename1 in os.listdir(temp1_path):
             if area > min_area and area < max_area:
                 cv2.rectangle(img, (x, y), (x + w, y + h), (36,255,12), 2)
                 ROI = original[y:y+h, x:x+w]
-                img_file_name1 = img_file_name1[:-4]
+                
                 #mg_file_name2 =str(img_name1) +"_img_cnt_" + {ROI_number} +".jpg"
                 img_file_name2 = str(img_file_name1) + "_img_cnt_" + str(ROI_number) +".jpg"
                 img_file2= os.path.join(temp2_path, img_file_name2)
