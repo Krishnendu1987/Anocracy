@@ -44,7 +44,7 @@ oldfile = ''
 for filename in os.listdir(temp2_path):
     fname = filename.split("-")[0] 
     if fname != oldfile:
-        oldfile = fname
+        
         # create an Empty DataFrame
         # object With column names only
         if oldfile != '':
@@ -52,6 +52,7 @@ for filename in os.listdir(temp2_path):
             xlsfpath = os.path.join(temp2_path, xslfname)
             df.to_excel(xlsfpath)
         df = pd.DataFrame(columns = ['Name', 'Age', 'Gender'])
+        oldfile = fname
     f = os.path.join(temp2_path, filename)
     # checking if it is a file
     if os.path.isfile(f):
