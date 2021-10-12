@@ -11,7 +11,7 @@ import json
 
 path=r'C:\Users\91990\Documents\Anocracy\PurboMidnapore\NandiGram'
 temp1_path=r'C:\Users\91990\Documents\Anocracy\PurboMidnapore\NandiGram\temp1'
-temp2_path=r'C:\Users\91990\Documents\Anocracy\PurboMidnapore\NandiGram\temp3'
+temp2_path=r'C:\Users\91990\Documents\Anocracy\PurboMidnapore\NandiGram\temp2'
 bengali2banglish = BengaliToBanglish()
 
 
@@ -96,7 +96,7 @@ for filename in os.listdir(temp2_path):
         new_str = new_str.replace('বয়স', '@')
         new_str = new_str.replace('ব্যস', '@')
         new_str = new_str.replace('লিঙ্গ', '&')
-        print('o/pval->', new_str)
+        #print('o/pval->', new_str)
         #new_str_name = []
         try:
             trgt_str:str = new_str.split('$')[1]
@@ -111,11 +111,11 @@ for filename in os.listdir(temp2_path):
             #print("Name :-> ",translated_new_str_name,"Clean Age :-> ",clean_new_age,"Clean Gender :-> ",clean_new_gender)
             #str_clean_dict = 'hi'
             str_clean_dict = '{'+'"Name" : "'+str(translated_new_str_name)+'", "Age" : "'+str(clean_new_age)+'", "Gender" : "'+str(clean_new_gender)+'"'+'}'
-            print(str_clean_dict)
+            #print(str_clean_dict)
             Dict = json.loads(str_clean_dict)
             #print(Dict)
             df = df.append(Dict,ignore_index = True)
         except:
             #print(e)
             continue
-#print(df)   
+        
