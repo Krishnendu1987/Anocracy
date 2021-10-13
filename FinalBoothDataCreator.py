@@ -22,7 +22,7 @@ temp2_path=r'C:\Users\91990\Documents\Anocracy\PurboMidnapore\NandiGram\temp2'
 
 bengali2banglish = BengaliToBanglish()
 
-
+df = pd.DataFrame(columns = ['Name', 'Age', 'Gender'])
 
 #directory = r'C:\Users\91990\Documents\Anocracy\temp'
 pytesseract.pytesseract.tesseract_cmd = (
@@ -107,10 +107,15 @@ for filename1 in os.listdir(temp1_path):
                 #mg_name=f"C:/Users/91990/Documents/Anocracy/temp/Image_cont_{ROI_number}.jpg"
                 cv2.imwrite(img_file2.format(ROI_number), ROI)
                 ROI_number += 1
-                
+
+list_of_files = sorted( filter( lambda x: os.path.isfile(os.path.join(temp2_path, x)),os.listdir(temp2_path) ) )
+latest_file = max(list_of_files)
+
 for filename in os.listdir(temp2_path):
     fname = filename.split("-")[0] 
+    latest_file_name = filename.split("-")[0]
     if fname != oldfile:
+        
         
         # create an Empty DataFrame
         # object With column names only
@@ -120,6 +125,13 @@ for filename in os.listdir(temp2_path):
             df.to_excel(xlsfpath)
         df = pd.DataFrame(columns = ['Name', 'Age', 'Gender'])
         oldfile = fname
+    else:
+        if latest_file_name == fname:
+            xslfname = oldfile + ".xlsx"
+            xlsfpath = os.path.join(temp2_path, xslfname)
+            df.to_excel(xlsfpath)
+        
+    
     f = os.path.join(temp2_path, filename)
     # checking if it is a file
     if os.path.isfile(f):
